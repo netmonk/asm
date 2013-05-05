@@ -1,3 +1,7 @@
+; you can find more there : 
+;http://cogsandlevers.blogspot.fr/2013/01/printing-registers-value-in-hex.html
+; mostly adapted this code to 64bit version 
+
 section .data 
     hex_chars db "0123456789ABCDEF"; hexchar for pretty printing
 section .text
