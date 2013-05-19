@@ -1,0 +1,30 @@
+This section contains the code of my journey into asm. 
+
+My current system is 64bit and linux(arch) so all the asm code is for this plateform. 
+In any case you can do whatever you want with the code at the condition you quote your sources. 
+
+-- fibo.asm: 
+it is an attempt to compute the fibonacci number only based on register (r11/r12)
+So once the integer is bigger than 64bits its unecessary to continue to compute. 
+May be next step would be to implement a bigmath routine which instead of relying only on register with size limitation
+should just use buffer. 
+The main operation to implement would be the addition of two buffers. 
+
+During the coding of fibo, i realise that the main problem is not to compute arithmetic operation on register, the loop
+and the addition juste take 6 lines in the code, but the main problem is to display value. 
+
+Registers are just number in binary format (or hex) and displaying the content is not so easy. 
+Indeed to display a decimal integer needs a dedicated process which take more instruction than just adding two registers.
+
+I isolated two process: 
+- rax2hex.asm which displays the content of the rax register (64bits) into 16chars representings the Hexadecimal value. 
+- rax2dec.asm which displays the content of the rax register (64bits) into a decimal integer. 
+
+Currently the code of rax2dec.asm is the one used in fibo.asm. 
+But the rax2hex.asm was my first attempt and running fine too in the first version of fibo.asm. 
+
+Have fun
+
+Netmonk, netmonk at netmonk dot org 
+http://www.netmonk.org 
+ 
