@@ -16,7 +16,7 @@ and the addition juste take 6 lines in the code, but the main problem is to disp
 
 --------------------------------------------------------------------------------------------
 Commit of 02/2014:
-Adding fibotest.asm using mmx registers and instruction instead of standard registers ! :) 
+Adding fibo2test.asm using mmx registers and instruction instead of standard registers ! :) 
 --------------------------------------------------------------------------------------------
 
 Registers are just number in binary format (or hex) and displaying the content is not so easy. 
