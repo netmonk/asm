@@ -14,10 +14,10 @@ During the coding of fibo, i realise that the main problem is not to compute ari
 and the addition juste take 6 lines in the code, but the main problem is to display value. 
 
 
---------------------------------------------------------------------------------------------
+---------------------------------------------------------
 Commit of 02/2014:
 Adding fibo2test.asm using mmx registers and instruction instead of standard registers ! :) 
---------------------------------------------------------------------------------------------
+---------------------------------------------------------
 
 Registers are just number in binary format (or hex) and displaying the content is not so easy. 
 Indeed to display a decimal integer needs a dedicated process which take more instruction than just adding two registers.
