@@ -60,7 +60,7 @@ section .data
     StmsgLen equ $-Stmsg   ; length of Stmsg 
     Edmsg: db "Ending computation",10   ; Ending msg
     EdmsgLen equ $-Edmsg ; length of Edmsg
-    a: dq 1; first step equal 1
+    a: dq 0; first step equal 1
     b: dq 1; second step equal 1
     table db '0123456789'
 
@@ -102,32 +102,28 @@ _start:
     xor r12,r12 ; r12 = 0
     mov r14,[a] ; r14 =1
     mov r12,[b] ; r12 =1
-    xor r13,r13 ; initialising counter
 
 
 Fibo: 
     add r14,r12 ; r14=r14+r12
+    jc Done; if overflow (CF=1) then jump to end
     mov rax, r14 ; loading value of r14 into rax
     mov rdi, output; loading address of output to rdi
     call _qw2a ; calling the reg2dec function
     mov byte[rcx+output],0xa; adding \n at the end of buffer
     inc rcx ; incrementing the size of the value to consider the \n
     sys_write 1,output,rcx; call the sys_write macro
-; almost same as above we compute two numbers for each round in loop
     add r12,r14; r12=r14+r12 (r14 already have the new value from last add)
+    jc Done; if overflow (CF=1) then jump to end
     mov rax,r12 ; loading value of r12 to rax
     mov rdi, output ; loading buffer address into rdi 
     call _qw2a; calling the reg2dec
     mov byte[rcx+output],0xa; adding \n for pretty printing
     inc rcx; incrementing size value
     sys_write 1,output,rcx; printing
-
-    inc r13 ; incrementing general counter
-    cmp r13,45; compare is < to 45
-    jna Fibo; if so then loop to Fibo
-
-    sys_write 1,Edmsg,EdmsgLen; printing end msg
+    jmp Fibo;
 Done: 
+    sys_write 1,Edmsg,EdmsgLen; printing end msg
     mov rax,60 ; load the 60 (exit) syscall value into rax
     mov rdi,0 ; load into rdi the return value of exit code
     syscall; call the kernel syscall 
