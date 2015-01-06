@@ -47,9 +47,9 @@ _start:
     mov r9,1 ; r9=1
 boucle: 
     add r8,r9 ; r8=r8+r9
-    jc fin;Jump to fin is overflow (CF=1) 
+    jc fin;Jump to fin if overflow (CF=1) 
     add r9,r8; r9=r8+r9
-    jc fin; Jump to fin is overflow (CF=1) 
+    jc fin; Jump to fin if overflow (CF=1) 
     jmp boucle; Jump to boucle to process another iteration 
 fin: 
     mov rax,60 ; load Syscall number to rax register 
