@@ -1,6 +1,6 @@
 ; #############################################################################
 ; #####################  licensing stuff : nBSDL ##############################
-; Copyright (c) 2013, netmonk.org 
+; Copyright (c) 2016, netmonk.org 
 ; All rights reserved.
 ; Redistribution and use in source and binary forms, with or without 
 ; modification, are permitted provided that the following conditions are met:
@@ -61,9 +61,6 @@ section .data
     Edmsg: db "Ending computation",10   ; Ending msg
     EdmsgLen equ $-Edmsg ; length of Edmsg
     fmt: db "%ld", 10,0
-    a: dq 0; first step equal 1
-    b: dq 1; second step equal 1
-    table db '0123456789'
 
 extern printf
 
@@ -72,19 +69,14 @@ main:
     nop
     sys_write 1,Stmsg,StmsgLen; writing starting msg 
 
-; initialisation of first two steps. 
     xor r14,r14 ; r14 = 0
+    inc r14; r14=0+1=1
     xor r12,r12 ; r12 = 0
-    mov r14,[a] ; r14 =1
-    mov r12,[b] ; r12 =1
-
+    inc r12; r12=0+1=1    
 
 Fibo: 
     add r14,r12 ; r14=r14+r12
     jc Done; if overflow (CF=1) then jump to end
-    ;mov rax, r14 ; loading value of r14 into rax
-    ;mov rdi, output; loading address of output to rdi
-    ;call _qw2a ; calling the reg2dec function
     push rbp 
     mov rsi,r14
     mov rdi,fmt
