@@ -37,7 +37,7 @@
 ; this code is for linux x86_64 only: 
 ; how to compile :  
 ; nasm -f elf64 -g -F stabs -o fibo.o fibo.asm
-; ld -o fibo fibo.o
+; gcc -o fibo fibo.o
 ;./fibo 
 ; 
 ; Courtesy of Netmonk, netmonk at netmonk dot org 
