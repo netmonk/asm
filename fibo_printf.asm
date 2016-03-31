@@ -30,7 +30,7 @@
 ; The main difficulties is not to compute the number
 ; its about displaying them 
 ; I find an elegant way there : 
-; http://cogsandlevers.blogspot.fr/2013/01/printing-registers-value-in-hex.html
+; http://tuttlem.github.io/2013/01/08/printing-a-register-s-value-in-hex.html
 ; also a dude (tefter) from #asm@freenode 
 ; provided a nice version to print in decimal way !
 ; 
@@ -70,7 +70,6 @@ main:
     sys_write 1,Stmsg,StmsgLen; writing starting msg 
 
     xor r14,r14 ; r14 = 0
-    inc r14; r14=0+1=1
     xor r12,r12 ; r12 = 0
     inc r12; r12=0+1=1    
 
