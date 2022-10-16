@@ -29,7 +29,31 @@ Currently the code of rax2dec.asm is the one used in fibo.asm.
 But the rax2hex.asm was my first attempt and running fine too in the first version of fibo.asm. 
 
 Have fun
+---------------------------------------------------------
+Commit of 16/10/2022
+Adapt 10power.asm to display rdrand instruction result on ia64
 
+Made a test to file a file with random data and compressed it to see just how random it is. 
+
+plonky@micronetmonk:~/work/asm$ ./rdrand  >tmpfile 
+^C    
+plonky@micronetmonk:~/work/asm$ wc -l tmpfile 
+1 tmpfile
+plonky@micronetmonk:~/work/asm$ wc -c tmpfile 
+497643930 tmpfile
+plonky@micronetmonk:~/work/asm$ ls -altr tmpfile 
+-rw-rw-r-- 1 plonky plonky 497643930 oct.  16 21:17 tmpfile
+plonky@micronetmonk:~/work/asm$ ls -altrh tmpfile 
+-rw-rw-r-- 1 plonky plonky 475M oct.  16 21:17 tmpfile
+plonky@micronetmonk:~/work/asm$ gzip tmpfile 
+plonky@micronetmonk:~/work/asm$ ls -altrh tmpfile.gz 
+-rw-rw-r-- 1 plonky plonky 223M oct.  16 21:17 tmpfile.gz
+
+So for a pure text file filed of number, it shrinks from 475mb of size to 223mb. Which is closer to 0.5 ratio than 0.1 ration often seen on text file. 
+
+I cannot tell if the data is very random, but i least the compression ratio close to 0.5 means it's more random than average file. 
+
+---------------------------------------------------------
 Netmonk, netmonk at netmonk dot org 
 http://www.netmonk.org 
  
